@@ -1,7 +1,7 @@
 const fs = require('node:fs'); // use for reading files in system
 const path = require('node:path'); // use for addressing paths of files
 // define what we want from Discord.js
-const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
+const { Client, Collection, Events, GatewayIntentBits, PresenceUpdateStatus } = require('discord.js');
 // using .env with dotenv module
 require('dotenv').config();
 
@@ -34,6 +34,14 @@ for (const folder of commandFolders) {
 
 // function that will activate (only once) after the client starts
 client.once(Events.ClientReady, readyClient => {
+	// set bot's status with setPresence() method
+	// read more:  https://discordjs.guide/popular-topics/faq.html#how-do-i-set-my-playing-status
+	client.user.setPresence({ 
+		activities: [{ 
+			name: 'gamefiend.net', // set playing status text
+		}], 
+		status: PresenceUpdateStatus.DoNotDisturb // change bot's presence with pre-made enum of Discord.js for safety
+	});
 	console.log(`Ready! Logged in as ${readyClient.user.tag}`);
 });
 // execute console log every time user used a slash command
