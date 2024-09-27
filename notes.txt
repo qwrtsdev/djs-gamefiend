@@ -1,0 +1,35 @@
+const wait = require('node:timers/promises').setTimeout;
+wait(2_000); // use nodejs timeout to wait 2 seconds
+
+
+interaction.editReply()
+
+ephemeral: true
+
+await interaction.followUp()
+
+await interaction.deferReply()
+
+
+const exampleEmbed = new EmbedBuilder()
+    .setColor(0x0099FF)
+    .setTitle('Some title')
+    .setURL('https://discord.js.org/')
+    .setAuthor({ name: 'Some name', iconURL: 'https://i.imgur.com/AfFp7pu.png', url: 'https://discord.js.org' })
+    .setDescription('some description')
+    .setThumbnail('https://i.imgur.com/AfFp7pu.png')
+    .addFields(
+        { name: 'Regular field title', value: 'Some value here' },
+        { name: '\u200B', value: '\u200B' },
+        { name: 'Inline field title', value: 'Some value here', inline: true },
+        { name: 'Inline field title', value: 'Some value here', inline: true },
+    )
+    .addFields({ name: 'Inline field title', value: 'Some value here', inline: true })
+    .setImage('https://i.imgur.com/AfFp7pu.png')
+    .setTimestamp()
+    .setFooter({ text: 'Some footer text here', iconURL: 'https://i.imgur.com/AfFp7pu.png' });
+
+embeds: [exampleEmbed]
+
+
+try catch
